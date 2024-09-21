@@ -17,7 +17,7 @@ pip install -e .
 ## Usage
 
 ### Configuration
-Domains and backends are specified with a YAML configuration file. An example config file is provided at [example_config.yml](https://github.com/dayt0n/anemoi/example_config.yml).
+Domains and backends are specified with a YAML configuration file. An example config file is provided at [example_config.yml](https://github.com/dayt0n/anemoi/tree/main/example_config.yml).
 
 #### Domains
 You can have multiple domains on one Anemoi instance. To do this, create a `config.yml` file that looks something like this:
@@ -118,7 +118,7 @@ Anemoi allows you to have multiple DNS provider types as well as backend types t
 Adding a new DNS provider should be fairly simple.
 
 Let's say there is a DNS provider, like Cloudflare, called `Groundwater`. To add Groundwater as a dynamic DNS provider, do the following:
-1. Create a file called [`anemoi/providers/groundwater.py`](https://github.com/dayt0n/anemoi/anemoi/providers/groundwater.py).
+1. Create a file called [`anemoi/providers/groundwater.py`](https://github.com/dayt0n/anemoi/tree/main/anemoi/providers/groundwater.py).
 2. Add a class in that file called `GroundwaterProvider(Provider)`. The class should have a skeleton like:
 ```python
 class GroundwaterProvider(Provider):
@@ -209,4 +209,4 @@ class YourBackend(Backend):
         return []
 ```
 
-[`anemoi.backends.database`](https://github.com/dayt0n/anemoi/anemoi/backends/database.py) and [`anemoi.backends.tinydb`](https://github.com/dayt0n/anemoi/anemoi/backends/tinydb.py) may be useful to look at as you are creating your new data storage backend.
+[`anemoi.backends.database`](https://github.com/dayt0n/anemoi/tree/main/anemoi/backends/database.py) and [`anemoi.backends.tinydb`](https://github.com/dayt0n/anemoi/tree/main/anemoi/backends/tinydb.py) may be useful to look at as you are creating your new data storage backend.
