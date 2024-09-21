@@ -1,0 +1,51 @@
+[build-system]
+requires = ["setuptools>=61.0", "setuptools_scm[toml]>=6.2"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "anemoi-dns"
+description = "A least privilege dynamic DNS server"
+dynamic = ["version"]
+authors = [{ name = "Dayton Hasty (dayt0n)", email = "dayt0n@dayt0n.com" }]
+keywords = ["dynamic", "dns", "least", "privilege", "zero trust"]
+dependencies = [
+  "click",
+  "flask",
+  "arrow",
+  "requests",
+  "tinydb",
+  "cloudflare",
+  "bcrypt",
+  "peewee",
+  "psycopg2",
+  "jsonschema",
+]
+readme = "README.md"
+requires-python = ">=3.9"
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "Operating System :: OS Independent",
+  "License :: OSI Approved :: BSD License",
+]
+
+[project.scripts]
+anemoi = "anemoi.cli:cli"
+
+[project.urls]
+Homepage = "https://dayt0n.com/articles/anemoi/"
+Repository = "https://github.com/dayt0n/anemoi"
+Issues = "https://github.com/dayt0n/anemoi/issues"
+
+[tool.setuptools.packages]
+find = {}
+
+[tool.flake8]
+extend-ignore = ["E501"]
+
+[tool.isort]
+profile = "black"
+
+[tool.bandit]
+skips = ["B113"]
+
+[tool.setuptools_scm]

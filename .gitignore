@@ -1,0 +1,8 @@
+.vscode
+*.egg-info
+build
+anemoi-clients.json
+.cloudflare.cfg
+config.yml
+__pycache__
+dist

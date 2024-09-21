@@ -1,0 +1,18 @@
+domains:
+  - zone: random-domain.org
+    provider: cloudflare
+    token: AAAAAAAAAAAAAAAAAAAAAAAAAAA
+
+  - zone: mydomain.com
+    provider: cloudflare
+    email: admin-user@yourdomain.com
+    key: asfdasfdasddfasddfasdfasdf
+
+  - zone: website.com
+    provider: porkbun
+    apikey: pk1_asdfasdfasdfasdfadsf
+    secret: sk1_lkjhlkjhlkjhlkjhlkjh
+backend:
+  type: database
+  vendor: sqlite
+  path: test-db.db

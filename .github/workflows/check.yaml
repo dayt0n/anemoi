@@ -1,0 +1,22 @@
+name: format and security check
+run-name: ${{ github.actor }} is checking security and formatting...
+on: [push]
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    container: catthehacker/ubuntu:act-latest
+    steps:
+      - name: checkout code
+        uses: actions/checkout@v3
+      - name: install python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.9.18"
+      - run: |
+          pip3 install black bandit isort flake8 Flake8-pyproject
+      - run: |
+          black --config pyproject.toml .
+      - run: |
+          flake8 --toml-config pyproject.toml
+      - run: |
+          bandit -r -c pyproject.toml .
