@@ -22,7 +22,7 @@ class BaseModel(Model):
 class ClientModel(BaseModel):
     domain = CharField(max_length=253)
     uuid = CharField(max_length=36)
-    secret_key = CharField(max_length=64)
+    secret_key = CharField()
     last_ip4 = CharField(max_length=15)
     last_ip6 = CharField(max_length=45)
 
