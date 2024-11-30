@@ -38,15 +38,23 @@ def home():
     return "anemoi server"
 
 
-@app.route("/check-in", methods=["POST"])
+@app.route("/check-in", methods=["POST", "GET"])
 def check_in():
-    if not request.is_json:
-        abort(400)
-    data = dict(request.json)
+    if request.method == "POST":
+        if not request.is_json:
+            abort(400)
+        data = dict(request.json)
+    else:
+        data = {
+            "uuid": request.args.get("uuid"),
+            "secret": request.args.get("secret"),
+            "ip": request.args.get("ip"),
+        }
     if not all(k in data for k in ("uuid", "secret")):
         abort(400)
     uuid = data.get("uuid")
     secret = data.get("secret")
+    manually_set_ip = data.get("ip")
     co = ClientOperator(current_app.config.get("anemoi.backend"))
     res = co.validate_secret(uuid, secret)
     if not res:  # no auth, exit
@@ -54,7 +62,7 @@ def check_in():
     if client := co.backend.get_client(uuid=uuid):
         providers: Providers = current_app.config.get("anemoi.providers")
         provider = providers.get_provider(client.domain)
-        ip = get_ip()
+        ip = manually_set_ip or get_ip()
         rtype = record_type(ip)
         ips = provider.get_record_ips(client.domain)
         providers_ip_record = ""  # handle if IP changed on provider's side, then update it to the real one

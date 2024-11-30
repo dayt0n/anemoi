@@ -102,9 +102,18 @@ anemoi client list
 
 A client is just a fancy word for a single web request. The request must contain a JSON `uuid` and `secret` field, and that's it. It can be done using a `curl` command:
 ```bash
-curl -X POST http://an.anemoi-server.com:9999/check-in -H 'Content-Type: application/json' \
+curl -X POST http://an.anemoi-server.com/check-in -H 'Content-Type: application/json' \
 -d '{"uuid":"aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee", "secret":"averylongsecrethere"}'
 ```
+
+If `GET` requests are more your speed, that also works:
+```bash
+curl 'http://an.anemoi-server.com/check-in?uuid=aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee&secret=averylongsecrethere'
+```
+
+This also means you can use any GET-based dynamic DNS client, such as the one in [pfSense](https://docs.netgate.com/pfsense/en/latest/services/dyndns/client.html).
+
+By default, Anemoi resolves the connecting client's IP on its own. *However*, if you want to manually pass an IP parameter, you can do that by appending an `ip` value with `?uuid=...&secret=...&ip=123.123.123.123` in a GET request or in a POST request body like `{"uuid": "...", "secret": "...", "ip": "123.123.123.123"}`.
 
 ## Development
 Before adding any pull requests, make sure you have [`pre-commit`](https://pre-commit.com/) installed, then add the hooks for this repo:
