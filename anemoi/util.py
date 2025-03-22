@@ -1,7 +1,7 @@
 import json
 import logging
 import socket
-from typing import Dict, Optional
+from typing import Dict, Optional, Union
 
 import bcrypt
 import requests
@@ -121,7 +121,7 @@ config_schema = """
 """
 
 
-def get_or_parse_yaml(data: Dict | str) -> Dict:
+def get_or_parse_yaml(data: Union[Dict, str]) -> Dict:
     if isinstance(data, str):
         with open(data, "r") as fp:
             data = yaml.safe_load(fp.read())

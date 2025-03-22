@@ -14,11 +14,12 @@ dependencies = [
   "arrow",
   "requests",
   "tinydb",
-  "cloudflare",
+  "cloudflare==2.20.0",
   "bcrypt",
   "peewee",
   "psycopg2",
   "jsonschema",
+  "pyyaml",
 ]
 readme = "README.md"
 requires-python = ">=3.9"

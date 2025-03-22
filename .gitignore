@@ -6,3 +6,4 @@ anemoi-clients.json
 config.yml
 __pycache__
 dist
+.python-version
