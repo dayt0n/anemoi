@@ -14,7 +14,7 @@ dependencies = [
   "arrow",
   "requests",
   "tinydb",
-  "cloudflare==2.20.0",
+  "cloudflare>=4.1.0", #==2.20.0",
   "bcrypt",
   "peewee",
   "psycopg2",
